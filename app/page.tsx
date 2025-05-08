@@ -43,6 +43,9 @@ export default   function Home() {
     }
     fetchDataP();
   }, []); 
+  console.log('products',products)
+  console.log('productsMDB',productsMDB)
+
 
 
   return (

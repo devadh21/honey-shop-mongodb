@@ -26,6 +26,13 @@ export interface ICustomer {
     
   } 
 
+    export interface IUserMDB {
+    user_name: string;
+    email: string;
+    password: string;
+    
+  }
+
 export interface IOrderSummaryData {
     product?: string;  // product name
     quantity: number;

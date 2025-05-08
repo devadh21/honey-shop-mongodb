@@ -1,10 +1,6 @@
 "use server";
 
 import dbConnect from "@/app/helpers/sqliteDb";
-import { useSession } from "next-auth/react";
-import { IUser } from "@/typings/interfaces";
-
-
 
 export  const addNewUser = async (full_name: string, email: string, password: string) => {  
 

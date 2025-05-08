@@ -11,6 +11,9 @@ export default async function  getProductsActions() {
 
 
 
+
+
+
   try {
     const products = await db.all("SELECT * FROM products");
     return products

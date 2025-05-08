@@ -1,6 +1,8 @@
 
 "use client";
 
+import { useEffect, useState } from "react";
+
 import Hero from "@compo/home/Hero";
 import Products from "@compo/home/Products"; 
 import About from "@/components/home/About";
@@ -8,9 +10,11 @@ import WhyUs from "@/components/home/WhyUs";
 import Services from "@/components/home/Services";
 import Newslatter from "@/components/home/Newslatter";
 
-import { IProduct } from "@/typings/interfaces";
+import { IProduct,IUserMDB } from "@/typings/interfaces";
 import { getProducts } from "@/utils/getProducts";
-import { useEffect, useState } from "react";
+import { getUsers } from "@/utils/getUsers";
+
+
 
 
 export default   function Home() {
@@ -18,6 +22,8 @@ export default   function Home() {
   // const data = await getProducts();
 
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [users, setUsers] = useState<IUserMDB[]>([]);
+
 
   useEffect(() => {
     
@@ -29,15 +35,7 @@ export default   function Home() {
     fetchData();
   }, []); 
 
-  console.log('pdtsss',products)
 
-
-  
-
-    
-
-   
- 
 
   return (
     <main className="full-screen"> 

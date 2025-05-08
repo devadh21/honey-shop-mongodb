@@ -10,6 +10,6 @@ export default async function mongodbConnect() {
        await mongoose.connect(MONGODB_URI);
        console.log('MongoDB connected seccessfully');       
    } catch (error) {
-       console.log(error) 
+       console.log("errorr",error) 
    }
 } 

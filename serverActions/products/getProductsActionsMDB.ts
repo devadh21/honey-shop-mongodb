@@ -5,7 +5,7 @@ import { Types } from 'mongoose';
 import { IProduct } from "@/typings/interfaces";
 
 import Product from "@/app/models/Product";
-import mongodbConnect from "@app/helpers/mongoosedb";
+import mongodbConnect from "@/netlify/functions/mongoosedb";
 
 export default async function getProductsActions() {
   //open db

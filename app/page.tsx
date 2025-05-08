@@ -12,6 +12,8 @@ import Newslatter from "@/components/home/Newslatter";
 
 import { IProduct,IUserMDB } from "@/typings/interfaces";
 import { getProducts } from "@/utils/getProducts";
+import { getProductsMDB } from "@/utils/getProductsMDB";
+
 import { getUsers } from "@/utils/getUsers";
 
 
@@ -22,7 +24,7 @@ export default   function Home() {
   // const data = await getProducts();
 
   const [products, setProducts] = useState<IProduct[]>([]);
-  const [users, setUsers] = useState<IUserMDB[]>([]);
+  const [productsMDB, setProductsMDB] = useState<IProduct[]>([]);
 
 
   useEffect(() => {
@@ -33,8 +35,14 @@ export default   function Home() {
       setProducts(data);
     }
     fetchData();
-  }, []); 
 
+    async function fetchDataP() {
+      // get products data from the server. 
+      const data = await getProductsMDB();
+      setProductsMDB(data);
+    }
+    fetchDataP();
+  }, []); 
 
 
   return (

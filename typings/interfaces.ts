@@ -6,6 +6,8 @@ export interface IProduct {
     old_price: string;
     half_kg?: string ;
     created_at?: string;
+    updated_at?: string;
+
   }
 export interface ICustomer { 
     id: string;

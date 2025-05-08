@@ -10,40 +10,28 @@ import WhyUs from "@/components/home/WhyUs";
 import Services from "@/components/home/Services";
 import Newslatter from "@/components/home/Newslatter";
 
-import { IProduct,IUserMDB } from "@/typings/interfaces";
+import { IProduct } from "@/typings/interfaces";
 import { getProducts } from "@/utils/getProducts";
 import { getProductsMDB } from "@/utils/getProductsMDB";
 
-import { getUsers } from "@/utils/getUsers";
+
 
 
 
 
 export default   function Home() {
   
-  // const data = await getProducts();
-
-  const [products, setProducts] = useState<IProduct[]>([]);
-  const [productsMDB, setProductsMDB] = useState<IProduct[]>([]);
+   const [productsMDB, setProductsMDB] = useState<IProduct[]>([]);
 
 
   useEffect(() => {
-    
-    async function fetchData() {
-      // get products data from the server. 
-      const data = await getProducts();
-      setProducts(data);
-    }
-    fetchData();
-
-    async function fetchDataP() {
+        async function fetchDataP() {
       // get products data from the server. 
       const data = await getProductsMDB();
       setProductsMDB(data);
     }
     fetchDataP();
   }, []); 
-  console.log('products',products)
   console.log('productsMDB',productsMDB)
 
 
@@ -51,7 +39,7 @@ export default   function Home() {
   return (
     <main className="full-screen"> 
       <Hero />
-      <Products products={products} />
+      <Products products={productsMDB} />
       <About />
       <WhyUs/>      
       <Services/>      

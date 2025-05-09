@@ -2,8 +2,6 @@ import { IProduct } from "@/typings/interfaces";
 // import getProductsActionsMDB   from "@/serverActions/products/getProductsActionsMDB";
 import getProductsActionsMDB   from "@/netlify/functions/getProductsActionsMDB";
 
-
-
 // import { revalidatePath } from "next/cache";
 
  

@@ -15,13 +15,6 @@ export default async function getProductsActions() {
   try {
     const products = await Product.find().lean(); // lean() converts Mongoose documents into plain JS objects.
 
-    // const cleanedProducts:IProduct[] = products.map((product) => ({
-    //   ...product,
-    //   _id: (product._id as Types.ObjectId).toString(), // .toString() ensures _id (a MongoDB ObjectId) becomes a serializable string.
-    //   created_at: product.created_at?.toISOString?.(), // .toISOString() ensures dates are serializable.
-    //   updated_at: product.updated_at?.toISOString?.(), // .toISOString() ensures dates are serializable.
-    // }));
-
     const cleanedProducts: IProduct[] = products.map(product => ({
       id: (product._id as Types.ObjectId).toString(),
       name: product.name,

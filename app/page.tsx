@@ -28,7 +28,6 @@ export default function Home() {
     }
     fetchDataP();
   }, []);
-  console.log("productsMDB", productsMDB);
 
   return (
     <main className="full-screen">

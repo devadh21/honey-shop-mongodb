@@ -13,7 +13,6 @@ export async function getProductsmongodb () {
   }
   try {
     await mongoose.connect(MONGODB_URI);
-    console.log("MongoDB connected seccessfully");
 
     const products = await Product.find().lean();
     const cleanedProducts: IProduct[] = products.map((product) => ({

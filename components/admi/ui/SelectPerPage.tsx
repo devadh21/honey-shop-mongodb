@@ -1,6 +1,6 @@
 "use client";
+
 import { useRouter } from "next/navigation";
-import { FormEvent, useState } from "react";
 
 function SelectPerPage({ page }: any) {
   const router = useRouter();

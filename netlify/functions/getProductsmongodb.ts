@@ -1,5 +1,5 @@
 "use server";
-// import mongoose from "mongoose";
+
 import { Types } from "mongoose";
 import { IProduct } from "@/typings/interfaces";
 import Product from "@/app/models/Product";
@@ -7,15 +7,9 @@ import Product from "@/app/models/Product";
 import mongodbConnect from "@/netlify/functions/mongoosedb";
 
 export async function getProductsmongodb() {
-  const connectMDB = await mongodbConnect();
+  const connectMDB = await mongodbConnect(); 
 
-  // const MONGODB_URI = process.env.DATABASE_MONGO_URL;
-  // if (!MONGODB_URI) {
-  //   throw new Error("Please define the MONGODB_URI environment variable");
-  // }
   try {
-    // await mongoose.connect(MONGODB_URI);
-
     const products = await Product.find().lean();
     const cleanedProducts: IProduct[] = products.map((product) => ({
       id: (product._id as Types.ObjectId).toString(),

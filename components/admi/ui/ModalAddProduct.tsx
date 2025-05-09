@@ -1,11 +1,13 @@
 "use client";
+
 import { useRef,useState } from "react";
+import { revalidatePath } from "next/cache";
 import ButtonAction from "@/components/admi/ui/ButtonAction";
 
 import { toast } from "sonner";
-import { addNewProduct } from "@/serverActions/addNewProductActions";
+import { addNewProductMDB } from "@/netlify/functions/addNewProductActions";
+import cloudinaryUploadActionMDB from "@/netlify/functions/cloudinaryUploadAction";
 
-import cloudinaryUploadAction from "@/serverActions/cloudinaryUploadAction";
 
 export default function ModalAddProduct({ setShow }: any) {
   const formRef = useRef<HTMLFormElement>(null); // ref of order comfirm form
@@ -14,17 +16,9 @@ export default function ModalAddProduct({ setShow }: any) {
     const files:never[] = Array.from(e.target.files);
     setImages(files);
   };
-  // console.log("zzae",images[0]);
-  // for (let index = 0; index < images.length; index++) {
-  //   const element = images[index];
-  //   console.log("first",element)
-    
-  // }
 
   const handleForm = async (formdata: FormData) => {
 
-    // console.log("zzae",images);
-    // Upload  image to Cloudinary
     const image_name = formdata.get("name") as string; // get product name .
     let images_url:any =[]
 
@@ -33,17 +27,17 @@ export default function ModalAddProduct({ setShow }: any) {
       const formdata = new FormData()
       formdata.append("img_url", element);
       formdata.append("name", `${image_name}_${index}`);
-
-      const secure_url = await cloudinaryUploadAction(formdata);
+      
+      const secure_url = await cloudinaryUploadActionMDB(formdata);
       images_url =  [...images_url ,secure_url ];      
     }
     
     formdata.delete("img_url"); // delete old img_url
-    formdata.append("img_url", images_url); // add new url external of image uploaded to formdata.
+    formdata.append("img_url", images_url); // add new url external of image uploaded to formdata.    
+    
+    await addNewProductMDB(formdata);
 
-    // await cloudinary.uploader.destroy("products/file_mfpogu");
 
-    await addNewProduct(formdata);
     // reset form
     formRef.current?.reset();
     // close modal
@@ -51,6 +45,7 @@ export default function ModalAddProduct({ setShow }: any) {
 
     // show notification
     toast.success("Your product successfuly added!");
+    revalidatePath("/admin/products");
   };
 
   return (

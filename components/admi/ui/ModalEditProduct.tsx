@@ -1,9 +1,12 @@
 "use client";
+
 import { useRef } from "react";
 import { toast } from "sonner";
-import { editProduct } from "@/serverActions/editProductActions";
+import { editProductMDB } from "@/netlify/functions/editProductActions";
+
 import { IProduct } from "@/typings/interfaces";
-import cloudinaryUploadAction from "@/serverActions/cloudinaryUploadAction";
+import cloudinaryUploadActionMDB from "@/netlify/functions/cloudinaryUploadAction";
+
 import cloudinary from "@/cloudinaryconfig";
 import ButtonAction from "@/components/admi/ui/ButtonAction";
 import React from "react";
@@ -23,22 +26,14 @@ export default function ModalEditProduct({
   const handleForm = async (formdata: FormData) => {
     const file_img = formdata.get("img_url") as File;
     const pdt_name = formdata.get("name") as File;
-    // // cloudinary.uploader.rename("products/" + pdt?.name, "new_name")
-    // cloudinary.uploader
-    //   .rename("products/" + pdt?.name, "grand_canyon",{type: "upload"})
-    //   // cloudinary.uploader.explicit('products/'+pdt?.name,{type: "upload"})
-    //   .then((result) => console.log("result", result));
-    
 
     
 
     if (file_img.name) {
       if (pdt_name !== pdt?.name) {
         await cloudinary.uploader.destroy("products/" + pdt?.name);
-        // await cloudinary.uploader.resource('sample')
-        // .then(result=>console.log(result));
       }
-      const secure_url = await cloudinaryUploadAction(formdata);
+      const secure_url = await cloudinaryUploadActionMDB(formdata);
       formdata.delete("img_url"); // delete old img_url
       formdata.append("img_url", secure_url); // add new  image path to formdata.
     } else {
@@ -46,7 +41,8 @@ export default function ModalEditProduct({
       formdata.append("img_url", pdt?.img_url); //  conserving old image url in formdata.
     }
 
-    await editProduct(formdata);
+    await editProductMDB(formdata);
+    
     // reset form
     formRef.current?.reset();
 

@@ -12,7 +12,9 @@ import Newslatter from "@/components/home/Newslatter";
 
 import { IProduct } from "@/typings/interfaces";
 import { getProducts } from "@/utils/getProducts";
-import { getProductsMDB } from "@/utils/getProductsMDB";
+// import { getProductsMDB } from "@/utils/getProductsMDB";
+import { getProductsMDB } from "@/netlify/functions/getProductsMDB";
+
 
 
 

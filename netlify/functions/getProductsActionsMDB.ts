@@ -10,7 +10,7 @@ import mongodbConnect from "@/netlify/functions/mongoosedb";
 export default async function getProductsActions() {
   //open db
 
-  const mongodb = await mongodbConnect();
+  const mongodb = await mongodbConnect(); 
 
   try {
     const products = await Product.find().lean(); // lean() converts Mongoose documents into plain JS objects.

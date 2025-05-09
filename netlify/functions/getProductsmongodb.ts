@@ -1,18 +1,20 @@
 "use server";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import { Types } from "mongoose";
 import { IProduct } from "@/typings/interfaces";
 import Product from "@/app/models/Product";
 
-export async function getProductsmongodb () {
-  
+import mongodbConnect from "@/netlify/functions/mongoosedb";
 
-  const MONGODB_URI = process.env.DATABASE_MONGO_URL;
-  if (!MONGODB_URI) {
-    throw new Error("Please define the MONGODB_URI environment variable");
-  }
+export async function getProductsmongodb() {
+  const connectMDB = await mongodbConnect();
+
+  // const MONGODB_URI = process.env.DATABASE_MONGO_URL;
+  // if (!MONGODB_URI) {
+  //   throw new Error("Please define the MONGODB_URI environment variable");
+  // }
   try {
-    await mongoose.connect(MONGODB_URI);
+    // await mongoose.connect(MONGODB_URI);
 
     const products = await Product.find().lean();
     const cleanedProducts: IProduct[] = products.map((product) => ({
@@ -26,12 +28,12 @@ export async function getProductsmongodb () {
       updated_at: product.updated_at?.toISOString?.(),
     }));
 
-    const res: IProduct[] | undefined  = cleanedProducts;
+    const res: IProduct[] | undefined = cleanedProducts;
 
     if (res === undefined) throw new Error("No Products Found");
 
-     return res;
+    return res;
   } catch (error) {
     console.log("errorr", error);
   }
-};
+}

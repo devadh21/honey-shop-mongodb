@@ -23,7 +23,6 @@
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {
-    "@netlify/next": "^1.4.9",
     "@types/bcryptjs": "^2.4.6",
     "@types/jquery": "^3.5.29",
     "@types/node": "^20",

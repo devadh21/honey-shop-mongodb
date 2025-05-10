@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 import { toast } from "sonner";
-import { editCustomer } from "@/serverActions/customers/editCustomerActions";
+import { editCustomerMDB } from "@/netlify/functions/editCustomerActions";
 import { ICustomer } from "@/typings/interfaces";
 import ButtonAction from "@/components/admi/ui/ButtonAction";
 
@@ -17,7 +17,7 @@ export default function ModalEditCustomer({
 
   const handleForm = async (formdata: FormData) => {
     
-    await editCustomer(formdata);
+    await editCustomerMDB(formdata);
 
     // reset form
     formRef.current?.reset();

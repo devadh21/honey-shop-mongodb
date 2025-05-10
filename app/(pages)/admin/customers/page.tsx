@@ -2,15 +2,15 @@
 import Pagenation from "@/components/admi/customers/Pagenation";
 import SearchBar from "@/components/admi/customers/SearchBar";
 import TablesCustomers from "@/components/admi/customers/TablesCustomers";
-import { getCustomersWithPagination } from "@/serverActions/customers/getCustomersWithPaginationAction";
+import { getCustomersWithPaginationMDB } from "@/netlify/functions/getCustomersWithPaginationAction";
+
 import { ICustomer } from "@/typings/interfaces";
 import SelectPerPage from "@/components/admi/ui/SelectPerPage";
 import Breadcrumb from "@compo/admi/ui/Breadcrumb";
 
 import { useEffect, useState } from "react";
 
-
-export default  function CustomersPage({
+export default function CustomersPage({
   searchParams,
 }: {
   searchParams: {
@@ -19,31 +19,28 @@ export default  function CustomersPage({
     per_page: string | string[] | undefined;
   };
 }) {
+  const [customers, setCustomers] = useState<ICustomer[] | undefined>(
+    undefined
+  );
 
-  const [customers, setCustomers] = useState<ICustomer[] | undefined>(undefined);
-
-  const { search, page, per_page } = searchParams; 
+  const { search, page, per_page } = searchParams;
   const currentPage = page ?? 1;
   const itemsPerPage = per_page ?? 5;
 
-  // const customerssWithPagination: ICustomer[] | undefined =
-  //   await getCustomersWithPagination(search, currentPage, itemsPerPage); // get all products from the database.
-  // const customers = customerssWithPagination;
-
-    useEffect(() => {      
-      async function fetchData() {
-        // get products data from the server.
-        const customerssWithPagination: ICustomer[] | undefined =
-        await getCustomersWithPagination(search, currentPage, itemsPerPage); // get all products from the database.         
-        setCustomers(customerssWithPagination);
-      }
-      fetchData();
-    }, []);  
+  useEffect(() => {
+    async function fetchData() {
+      // get products data from the server.
+      const customerssWithPagination: ICustomer[] | undefined =
+        await getCustomersWithPaginationMDB(search, currentPage, itemsPerPage); // get all products from the database.
+      setCustomers(customerssWithPagination);
+    }
+    fetchData();
+  }, [search, currentPage, itemsPerPage]);
 
   return (
     <div className="p-4">
       <div className="">
-        <Breadcrumb/>
+        <Breadcrumb />
       </div>
       <h2>All customers</h2>
       <div className=""></div>

@@ -1,5 +1,5 @@
 "use client"
-import { deleteCustomrById } from "@/serverActions/customers/deleteCustomerAction";
+import { deleteCustomrByIdMDB } from "@/netlify/functions/deleteCustomerAction";
 import { toast } from "sonner";
 import { ICustomer } from "@/typings/interfaces";
 
@@ -14,7 +14,7 @@ export default function ModalDeleteCustomer({
   const deleteProduct =
   (PRODUCTID: string, PORODUCTNAME: string) => async () => {
     try {
-      const res: any = await deleteCustomrById(PRODUCTID);
+      const res: any = await deleteCustomrByIdMDB(PRODUCTID);
       //close modal
       setShowModalDelete(false)
       // show notification

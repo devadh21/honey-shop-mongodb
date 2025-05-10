@@ -28,7 +28,7 @@ export default function ProductsPage({
   const itemsPerPage = per_page ?? 5;
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData() { 
       // get products data from the server.
 
       const productsWithPaginationMDB: IProduct[] | undefined =

@@ -26,7 +26,6 @@ export  const editProductMDB = async (formdata: FormData) => {
         { new: true } // return the updated document
       );
 
-      console.log('updatedProduct',updatedProduct)
       revalidatePath("/admin/products"); // update data  in the page /admin/products after deleting a product.
       return { status: 200, message: "ok" };
     } catch (error) {

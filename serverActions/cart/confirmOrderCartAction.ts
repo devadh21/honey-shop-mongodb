@@ -19,7 +19,7 @@ export const confirmOrderCartAction = async (
       
   
       try {
-        customer.map(async(i:any)=>{
+        customer.map(async(i:any)=>{ 
             await db.run(
               'INSERT INTO customers (full_name,adress,phone,product,quantity,weight,total_price)  VALUES(?,?,?,?,?,?,?)',
               [i.full_name,i.adress,i.phone,i.name,i.quantity,i.weight,i.total_price]

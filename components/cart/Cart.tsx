@@ -8,7 +8,9 @@ import Image from "next/image";
 import CartContext from "@/context/CartContext";
 import Link from "next/link";
 import ModalComfirm from "@compo/detailsProduct/ModalComfirm";
-import { confirmOrderCartAction } from "@/serverActions/cart/confirmOrderCartAction";
+// import { confirmOrderCartAction } from "@/serverActions/cart/confirmOrderCartAction";
+import { confirmOrderCartActionMDB } from "@/netlify/functions/confirmOrderCartAction";
+
 import { IshippingInfo} from "@/typings/interfaces";
 
 export default function Cart() {
@@ -49,7 +51,7 @@ export default function Cart() {
       adress: formdata.get("adress"),
     };
 
-    await confirmOrderCartAction(shippingInfo, cartItems);
+    await confirmOrderCartActionMDB(shippingInfo, cartItems);
     // reset form
     formRef.current?.reset();
 

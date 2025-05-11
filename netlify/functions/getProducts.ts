@@ -6,7 +6,7 @@ import Product from "@/app/models/Product";
 
 import mongodbConnect from "@/netlify/functions/mongoosedb";
 
-export async function getProductsmongodb() {
+export async function getProductsMDB() {
   const connectMDB = await mongodbConnect(); 
 
   try {

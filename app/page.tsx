@@ -10,10 +10,9 @@ import Services from "@/components/home/Services";
 import Newslatter from "@/components/home/Newslatter";
 
 import { IProduct } from "@/typings/interfaces";
+
 import { getProducts } from "@/utils/getProducts";
-// import { getProductsMDB } from "@/utils/getProductsMDB";
-// import { getProductsMDB } from "@/netlify/functions/getProductsMDB";
-import { getProductsmongodb } from "@/netlify/functions/getProductsmongodb";
+import { getProductsMDB } from "@/netlify/functions/getProducts";
 
 export default function Home() {
   const [productsMDB, setProductsMDB] = useState<IProduct[] | undefined>(
@@ -23,7 +22,10 @@ export default function Home() {
   useEffect(() => {
     async function fetchDataP() {
       // get products data from the server.
-      const data = await getProductsmongodb();
+
+      const data = await getProductsMDB();
+      // const data = await getProducts();
+
       setProductsMDB(data);
     }
     fetchDataP();

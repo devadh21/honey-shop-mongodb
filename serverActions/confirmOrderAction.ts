@@ -1,7 +1,7 @@
 
 'use server'
 
-import dbConnect from "@app/helpers/sqliteDb";
+
 
 
 interface IOrderSummaryData {
@@ -17,7 +17,8 @@ interface IConfirmOrderData {
 }
 
 export const confirmOrderAction = async (confirmOrderData2:IConfirmOrderData,OrderSummaryData:IOrderSummaryData)=>{
-    await fetch(process.env.URL_SITE +"/api/products/comfirmorder", {
+  
+  await fetch(process.env.URL_SITE +"/api/products/comfirmorder", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

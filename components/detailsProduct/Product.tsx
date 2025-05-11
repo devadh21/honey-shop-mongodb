@@ -14,7 +14,7 @@ export default function Product() {
 
       {/* order form */}
       <div className=" my-4">
-        <OrderProductSection />
+        <OrderProductSection /> 
       </div>
       <AboutProduct />
       <MoreProducts />

@@ -41,7 +41,7 @@ function OrderComfirmForm({ confirmOrder, formRef }: any) {
           />
         </div>
         <div >
-          <BtnComfirmOrder />
+          <BtnComfirmOrder /> 
         </div>
       </form>
     </>

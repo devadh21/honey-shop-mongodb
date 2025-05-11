@@ -1,7 +1,7 @@
 "use server";
 
 import mongodbConnect from "@/netlify/functions/mongoosedb";
-import { getProductsmongodb } from "@/netlify/functions/getProductsmongodb";
+import { getProductsmongodb } from "@/netlify/functions/getProducts";
 import { Types } from "mongoose";
 import { IProduct } from "@/typings/interfaces";
 import Product from "@/app/models/Product";

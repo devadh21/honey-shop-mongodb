@@ -4,7 +4,7 @@ import OrderSummary from "@compo/detailsProduct/OrderSummary";
 import { useParams } from "next/navigation";
 import LoandingOrder from "@/components/detailsProduct/ui/LoandingOrder";
 import { toast, Toaster } from "sonner";
-import { confirmOrderAction } from "@/serverActions/confirmOrderAction";
+import { confirmOrderActionMDB } from "@/netlify/functions/confirmOrderAction";
 
 import { IProduct, IOrderSummaryData } from "@/typings/interfaces";
 import ModalComfirm from "@compo/detailsProduct/ModalComfirm";
@@ -22,10 +22,11 @@ function OrderProductSection() {
 
   //Retrieve "id" param to the url
   const { id } = useParams();
+  const id_string = id.toString();
 
   const getProductById = async () => {
     try {
-      const res = await fetch(`/api/products/honey/${id}`, {
+      const res = await fetch(`/api/products/honey/${id_string}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: "1234567890abcdefghijklmnopqrstuvwxyz",
@@ -78,7 +79,6 @@ function OrderProductSection() {
 
     return totalPrice.toFixed(2);
   };
-  // console.log("OrderSummaryData",OrderSummaryData)
 
   const confirmOrder = async (formdata: FormData) => {
     const confirmOrderData2 = {
@@ -87,7 +87,7 @@ function OrderProductSection() {
       adress: formdata.get("adress"),
     };
 
-    await confirmOrderAction(confirmOrderData2, OrderSummaryData);
+    await confirmOrderActionMDB(confirmOrderData2, OrderSummaryData);
 
     // reset form
     formRef.current?.reset();

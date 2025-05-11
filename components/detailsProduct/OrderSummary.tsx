@@ -34,10 +34,10 @@ function OrderSummary({
             <div className="flex flex-col items-center justify-between">
               <div className="flex justify-end items-center w-full gap-2 py-4">
               <span className="text-2xl text-green-700">
-                  {product?.price.toFixed(2)} DH
+                  {Number(product?.price).toFixed(2)} DH
                 </span>
                 <span className="line-through text-red-700">
-                  {product?.old_price.toFixed(2)} DH
+                  {Number(product?.old_price).toFixed(2)} DH
                 </span>
               </div>
               <div className="flex justify-between w-full ">
@@ -57,7 +57,7 @@ function OrderSummary({
                       htmlFor="one_kg"
                       className="sm:text-[13px] text-[12px]"
                     >
-                      1 Kg = {product?.price.toFixed(2)} DH
+                      1 Kg = {Number(product?.price).toFixed(2)} DH
                     </label>
                   </div>
                   <div className="flex flex-col  sm:flex-row justify-between items-center gap-1">
@@ -73,7 +73,7 @@ function OrderSummary({
                       htmlFor="half_kg"
                       className="sm:text-[13px] text-[12px]"
                     >
-                      1/2 Kg = {product?.half_kg.toFixed(2)} DH
+                      1/2 Kg = {Number(product?.half_kg).toFixed(2)} DH
                     </label>
                   </div>
                 </div>

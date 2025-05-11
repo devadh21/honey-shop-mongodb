@@ -2,7 +2,7 @@
 
 import { Types } from "mongoose";
 import { IProduct } from "@/typings/interfaces";
-import Product from "@/app/models/Product";
+import Product from "@/app/models/Product"; 
 
 import mongodbConnect from "@/netlify/functions/mongoosedb";
 

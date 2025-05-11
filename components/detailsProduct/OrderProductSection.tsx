@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import LoandingOrder from "@/components/detailsProduct/ui/LoandingOrder";
 import { toast, Toaster } from "sonner";
 import { confirmOrderActionMDB } from "@/netlify/functions/confirmOrderAction";
+import { getProductByIdMDB } from "@/netlify/functions/getProductById";
 
 import { IProduct, IOrderSummaryData } from "@/typings/interfaces";
 import ModalComfirm from "@compo/detailsProduct/ModalComfirm";
@@ -24,24 +25,26 @@ function OrderProductSection() {
   const { id } = useParams();
   const id_string = id.toString();
 
-  const getProductById = async () => {
+  const ProductDetails = async () => {
     try {
-      const res = await fetch(`/api/products/honey/${id_string}`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "1234567890abcdefghijklmnopqrstuvwxyz",
-        },
-      });
-      if (!res.ok) throw new Error("Failed to fetch product");
-      const product = await res.json();
+      // const res = await fetch(`/api/products/honey/${id_string}`, {
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     Authorization: "1234567890abcdefghijklmnopqrstuvwxyz",
+      //   },
+      // });
+      // if (!res.ok) throw new Error("Failed to fetch product");
+      // const product = await res.json();
+
+      const product = await getProductByIdMDB(id_string);
 
       if (product) {
-        setProduct(product.data);
+        setProduct(product);
 
         // Set product name in order summary data
         setOrderSummaryData({
           ...OrderSummaryData,
-          product: product.data.name,
+          product: product.name,
         });
       }
     } catch (error) {
@@ -50,7 +53,7 @@ function OrderProductSection() {
   };
 
   useEffect(() => {
-    getProductById();
+    ProductDetails();
   }, []);
 
   const handleInputOrderSummary = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,7 +1,7 @@
 "use server";
 
 import mongodbConnect from "@/netlify/functions/mongoosedb";
-import { getProductsmongodb } from "@/netlify/functions/getProducts";
+import { getProductsMDB } from "@/netlify/functions/getProducts";
 import { Types } from "mongoose";
 import { IProduct } from "@/typings/interfaces";
 import Product from "@/app/models/Product";
@@ -11,7 +11,7 @@ export const getProductsWithPaginationMDB = async (
   searchKeyword: any,
   currentPage: any,
   itemsPerPage: any
-) => {
+) => { 
   //Open db
   const connectMDB = await mongodbConnect();
 
@@ -65,7 +65,7 @@ export const getProductsWithPaginationMDB = async (
     }
 
     // retrieve all products  from the database.
-    const data: IProduct[] | undefined = await getProductsmongodb();
+    const data: IProduct[] | undefined = await getProductsMDB();
 
     return data;
   } catch (error) {

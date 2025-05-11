@@ -27,8 +27,8 @@ export async function POST(req: NextRequest, res: NextResponse) {
     weight,
     total_price,
   }: custmersData = await req.json();
-  console.log("customerrrrrrrrrrrrrrrr",full_name, adress, phone, product, quantity, weight, total_price);
-  console.log("testtttttttttttttttttt")
+//   console.log("customerrrrrrrrrrrrrrrr",full_name, adress, phone, product, quantity, weight, total_price);
+//   console.log("testtttttttttttttttttt")
 
   try {
     // await db.run(
@@ -37,16 +37,16 @@ export async function POST(req: NextRequest, res: NextResponse) {
     // )
     // await db.close();
 
-    const newCustomer = new Customer({
-      full_name,
-      adress,
-      phone,
-      product,
-      quantity,
-      weight,
-      total_price,
-    });
-    await newCustomer.save();
+    // const newCustomer = new Customer({
+    //   full_name,
+    //   adress,
+    //   phone,
+    //   product,
+    //   quantity,
+    //   weight,
+    //   total_price,
+    // });
+    // await newCustomer.save();
 
     return NextResponse.json({ stuts: 201, message: "ok" });
   } catch (error) {

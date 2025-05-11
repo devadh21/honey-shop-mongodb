@@ -1,5 +1,7 @@
 import Product from "@/app/models/Product";
 import mongodbConnect from "@/netlify/functions/mongoosedb";
+import {getProductByIdMDB} from "@/netlify/functions/getProductById";
+
 import { NextResponse, NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
@@ -16,7 +18,9 @@ export async function GET(req: NextRequest) {
 
 
   // Retrieve product by id from MDB
-  const product = await Product.findById(id);
+  // const product = await Product.findById(id);
+  const product = await getProductByIdMDB(id);
+
 
 
   // Checking if product finded is found

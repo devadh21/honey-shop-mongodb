@@ -23,7 +23,7 @@ function OrderProductSection() {
 
   //Retrieve "id" param to the url
   const { id } = useParams();
-  const id_string = id.toString();
+  // const id_string = id.toString();
 
   const ProductDetails = async () => {
     try {
@@ -36,7 +36,7 @@ function OrderProductSection() {
       // if (!res.ok) throw new Error("Failed to fetch product");
       // const product = await res.json();
 
-      const product = await getProductByIdMDB(id_string);
+      const product = await getProductByIdMDB(id);
 
       if (product) {
         setProduct(product);

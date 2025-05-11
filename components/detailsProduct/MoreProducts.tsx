@@ -1,19 +1,10 @@
-import React from "react";
+"use client"
 
 import ProductCard from "@/elements/ProductCard";
 import { IProduct } from "@/typings/interfaces";
-import getProductsActions from "@/serverActions/products/getProductsActions";
 import {getProductsMDB} from "@/netlify/functions/getProducts";
 
-
-// async function getProducts() {
-//   const res = await getProductsActions();
-//   if (res === undefined) throw new Error("No Products Found");
-//   return res;
-// }
-
 export default async function MoreProducts() {
-  // const res = await getProducts();
   const res = await getProductsMDB();
 
   const productList = res as IProduct[];

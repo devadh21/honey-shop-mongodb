@@ -1,47 +1,41 @@
 "use server";
 
-import { Types } from "mongoose";
+
 import Product from "@/app/models/Product";
 import { IProduct } from "@/typings/interfaces";
 
 
 import mongodbConnect from "@/netlify/functions/mongoosedb";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function getProductByIdMDB(id: string | undefined) {
+
+export async function getProductByIdMDB(id: string |string[] | undefined) {
   const connectMDB = await mongodbConnect();
 
   try {
-    const product : IProduct | null   = await Product.findById(id);
-
-
-
-
-
-    // const cleanedProduct: IProduct[] | null = product.map((pdt) => ({
-    //   id: (pdt._id as Types.ObjectId).toString(),
-    //   name: pdt.name,
-    //   price: pdt.price,
-    //   old_price: pdt.old_price,
-    //   half_kg: pdt.half_kg,
-    //   img_url: pdt.img_url,
-    //   created_at: pdt.created_at?.toISOString?.(),
-    //   updated_at: pdt.updated_at?.toISOString?.(),
-    // }));
-
-    // console.log("first",cleanedProduct)
-
-
-
-    // const product: IProduct[] | undefined = cleanedProduct;
-    
+    const product  = await Product.findById(id).lean<IProduct>(); 
+    // if (!product) {
+    //   return NextResponse.json({ error: "Product not found" }, { status: 404 });
+    // }
 
     if (product === undefined) throw new Error("No Products Found");
     if (product === null) throw new Error("No Products Found");
 
+    const cleanedProduct: IProduct = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      old_price: product.old_price,
+      half_kg: product.half_kg,
+      img_url: product.img_url,
+      created_at: product.created_at,
+      updated_at: product.updated_at,
+    };
+    
+    const res: IProduct | undefined = cleanedProduct;
 
-  
 
-    return product;
+    return cleanedProduct;
   } catch (error) {
     console.log("errorr", error);
   }

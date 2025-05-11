@@ -1,7 +1,6 @@
 'use server'
 import User from '@/app/models/User';
-import mongodbConnect from "@app/helpers/mongoosedb";
-
+import mongodbConnect from "@/netlify/functions/mongoosedb";
 
 
 export default async function  getUsersActions() {

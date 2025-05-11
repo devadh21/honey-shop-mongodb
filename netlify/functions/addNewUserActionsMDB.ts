@@ -1,7 +1,8 @@
 "use server";
 
 import User from '@/app/models/User';
-import mongodbConnect from "@app/helpers/mongoosedb";
+import mongodbConnect from "@/netlify/functions/mongoosedb";
+
 
 
 export  const addNewUser = async (user_name: string, email: string, password: string) => {  

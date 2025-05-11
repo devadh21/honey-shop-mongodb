@@ -1,5 +1,5 @@
 import { IUserMDB } from "@/typings/interfaces";
-import getUsersActions   from "@/serverActions/users/getUsersActionsMDB";
+import getUsersActions   from "@/netlify/functions/getUsersActionsMDB";
 // import { revalidatePath } from "next/cache";
 
  

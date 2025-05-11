@@ -1,5 +1,3 @@
-// import { deleteProductById } from "@/serverActions/deleteProductAction";
-import { toast } from "sonner";
 import { IProduct } from "@/typings/interfaces";
 
 

@@ -4,7 +4,7 @@ import mongodbConnect from "@/netlify/functions/mongoosedb";
 import Customer from "@/app/models/Customer";
 import { revalidatePath } from "next/cache";
 
-export const deleteCustomrByIdMDB = async (id: string) => {
+export const deleteCustomerByIdMDB = async (id: string) => {
   //Open db
   const connectMDB = await mongodbConnect();
 

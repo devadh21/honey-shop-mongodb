@@ -11,8 +11,13 @@ export async function getProductByIdMDB(id: string | undefined) {
   const connectMDB = await mongodbConnect();
 
   try {
-    const product :IProduct | null  = await Product.findById(id);
-    // const cleanedProduct: IProduct[] = product.map((pdt) => ({
+    const product : IProduct | null   = await Product.findById(id);
+
+
+
+
+
+    // const cleanedProduct: IProduct[] | null = product.map((pdt) => ({
     //   id: (pdt._id as Types.ObjectId).toString(),
     //   name: pdt.name,
     //   price: pdt.price,
@@ -23,13 +28,18 @@ export async function getProductByIdMDB(id: string | undefined) {
     //   updated_at: pdt.updated_at?.toISOString?.(),
     // }));
 
+    // console.log("first",cleanedProduct)
 
 
-    // const res: IProduct[] | undefined = cleanedProduct;
+
+    // const product: IProduct[] | undefined = cleanedProduct;
+    
 
     if (product === undefined) throw new Error("No Products Found");
     if (product === null) throw new Error("No Products Found");
 
+
+  
 
     return product;
   } catch (error) {

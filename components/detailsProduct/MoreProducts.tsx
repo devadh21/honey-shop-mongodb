@@ -3,18 +3,22 @@ import React from "react";
 import ProductCard from "@/elements/ProductCard";
 import { IProduct } from "@/typings/interfaces";
 import getProductsActions from "@/serverActions/products/getProductsActions";
+import {getProductsMDB} from "@/netlify/functions/getProducts";
 
-async function getProducts() {
-  const res = await getProductsActions();
-  if (res === undefined) throw new Error("No Products Found");
-  return res;
-}
+
+// async function getProducts() {
+//   const res = await getProductsActions();
+//   if (res === undefined) throw new Error("No Products Found");
+//   return res;
+// }
 
 export default async function MoreProducts() {
-  const res = await getProducts();
+  // const res = await getProducts();
+  const res = await getProductsMDB();
+
   const productList = res as IProduct[];
   const first_tree_products = productList.slice(0, 3);
-  //   console.log("dd",productList.slice(0,3))
+
 
   return (
     <div className="mt-20 py-4">

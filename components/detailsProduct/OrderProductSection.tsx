@@ -27,15 +27,6 @@ function OrderProductSection() {
 
   const ProductDetails = async () => {
     try {
-      // const res = await fetch(`/api/products/honey/${id_string}`, {
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     Authorization: "1234567890abcdefghijklmnopqrstuvwxyz",
-      //   },
-      // });
-      // if (!res.ok) throw new Error("Failed to fetch product");
-      // const product = await res.json();
-
       const product = await getProductByIdMDB(id);
 
       if (product) {

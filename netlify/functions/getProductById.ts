@@ -3,20 +3,13 @@
 
 import Product from "@/app/models/Product";
 import { IProduct } from "@/typings/interfaces";
-
-
 import mongodbConnect from "@/netlify/functions/mongoosedb";
-import { NextResponse, NextRequest } from "next/server";
-
 
 export async function getProductByIdMDB(id: string |string[] | undefined) {
   const connectMDB = await mongodbConnect();
 
   try {
     const product  = await Product.findById(id).lean<IProduct>(); 
-    // if (!product) {
-    //   return NextResponse.json({ error: "Product not found" }, { status: 404 });
-    // }
 
     if (product === undefined) throw new Error("No Products Found");
     if (product === null) throw new Error("No Products Found");

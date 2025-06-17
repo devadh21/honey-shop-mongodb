@@ -8,6 +8,9 @@ import About from "@/components/home/About";
 import WhyUs from "@/components/home/WhyUs";
 import Services from "@/components/home/Services";
 import Newslatter from "@/components/home/Newslatter";
+import Chatbot from "@/components/chatbot/Chatbot";
+
+
 
 import { IProduct } from "@/typings/interfaces";
 import { getProductsMDB } from "@/netlify/functions/getProducts";
@@ -37,6 +40,7 @@ export default function Home() {
       <WhyUs />
       <Services />
       <Newslatter />
+      <Chatbot />
     </main>
   );
 }

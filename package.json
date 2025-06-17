@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@n8n/chat": "^0.27.1",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.0.3",
     "flowbite": "^2.3.0",

@@ -1,9 +1,10 @@
+
 "use server";
 import dbConnect from "@/app/helpers/sqliteDb";
 
 export default async function newsLatterAction(email:string) {
   //Open db
-  const db = await dbConnect();
+  const db = await dbConnect(); 
 
   try {
     const res = await db.run(

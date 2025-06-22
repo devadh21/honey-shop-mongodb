@@ -3,7 +3,9 @@ import { useRef } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import { Toaster } from "sonner";
-import newsLatterAction from "@/serverActions/newslatter/newsLatterAction";
+// import newsLatterAction from "@/serverActions/newslatter/newsLatterAction";
+import newsLatterActionMDB from "@/netlify/functions/newsLatterActionMDB";
+
 import isEmailActions from "@/serverActions/newslatter/isEmailActions";
 
 function Newslatter() {
@@ -23,10 +25,11 @@ function Newslatter() {
         return false;
       }
 
-      try {
-        await newsLatterAction(email);
+      try {        
+        await newsLatterActionMDB(email);
         toast.success(`Subscribed Successfully!`);
         ref_form.current?.reset();
+        
         
 
       } catch (err) {

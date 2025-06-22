@@ -9,9 +9,7 @@ export default async function newsLatterActionMDB(email:String) {
   
 
       try {
-console.log(email)
-        const newsLatter = await NewsLatter.create({email});
-        console.log(email)
+        const newsLatter = await NewsLatter.create({email});       
   
         return { status: 200, message: "ok" };
       } catch (error) {

@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 // import newsLatterAction from "@/serverActions/newslatter/newsLatterAction";
 import newsLatterActionMDB from "@/netlify/functions/newsLatterActionMDB";
 
-import isEmailActions from "@/serverActions/newslatter/isEmailActions";
+import isEmailActions from "@/netlify/functions/isEmailActions";
 
 function Newslatter() {
     const ref_form = useRef<HTMLFormElement>(null);
@@ -17,8 +17,9 @@ function Newslatter() {
     if (email === "") {
         toast.error(`Please enter your email address`);
       return false;
-    } else {
+    } else {      
       const res = await isEmailActions(email);
+
       //verifie is  the email exist or not
       if (res?.isEmail) {
         toast.error(`Email Address already exist!`);

@@ -26,7 +26,7 @@ export default function ModalAddProduct({ setShow }: any) {
       const element = images[index];
       const formdata = new FormData()
       formdata.append("img_url", element);
-      formdata.append("name", `${image_name}_${index}`);
+      formdata.append("name", `${image_name}_${index}`); 
       
       const secure_url = await cloudinaryUploadActionMDB(formdata);
       images_url =  [...images_url ,secure_url ];      

@@ -18,7 +18,7 @@ async function cloudinaryUploadActionMDB(
   await new Promise((resolve, reject) => {
     cloudinary.uploader
       .upload_stream(
-        { public_id: image_name }, // rename public_id  with name of the uploaded file.
+        { public_id: image_name }, // rename public_id  with name of the uploaded file. 
         function (error, result) {
           if (error) return reject(error);
           url = result!.secure_url;

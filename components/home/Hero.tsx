@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import ButtonLink from "@/elements/ButtonLink";
+import {VideoOfHero} from "@/elements/VideoOfHero";
 
 
 export default function Hero() {
@@ -10,6 +11,7 @@ export default function Hero() {
         <div className=" basis-1/2 flex flex-col justify-center p-4 ">
           <div className="relative">
             <div className="">
+              
               <Image
                 src="/img/bee_honey.png"
                 alt="bee"
@@ -32,14 +34,15 @@ export default function Hero() {
           </div>
         </div>
         <div className="relative basis-1/2 flex  justify-center p-4 ">
-          <Image
+        < VideoOfHero></VideoOfHero>
+          {/* <Image
             src="/img/hero_honey2.png"
             alt="honey  hero"
             width={1100}
             height={1100}
             priority={true}
             className=""
-          />
+          /> */}
         </div>
       </div>
     </section>

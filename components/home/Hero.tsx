@@ -23,7 +23,7 @@ export default function Hero() {
           </div>
           <div className="pt-3 ">
             <p className=" select-none">
-              Welcome to Honey Bee, your premium honey destination! Explore rare
+              Welcome to Bee Honey, your premium honey destination! Explore rare
               single-origin varieties and expertly crafted blends. Whether
               you're a connoisseur or enthusiast, we have the perfect honey for
               you. Experience nature's richness with us!{" "}

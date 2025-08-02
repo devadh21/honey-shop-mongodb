@@ -3,10 +3,9 @@ import Image from "next/image";
 import ButtonLink from "@/elements/ButtonLink";
 import {VideoOfHero} from "@/elements/VideoOfHero";
 
-
 export default function Hero() {
   return (
-    <section className=" bg-white bg-[url('/img/background_hero1.png')]  bg-contain   ">
+    <section className="    bg-contain bg-background dark:bg-dark_background dark:text-dark_text   ">
       <div className="container flex flex-col-reverse justify-around  sm:flex-row  ">
         <div className=" basis-1/2 flex flex-col justify-center p-4 ">
           <div className="relative">
@@ -35,14 +34,6 @@ export default function Hero() {
         </div>
         <div className="relative basis-1/2 flex  justify-center p-4 ">
         < VideoOfHero></VideoOfHero>
-          {/* <Image
-            src="/img/hero_honey2.png"
-            alt="honey  hero"
-            width={1100}
-            height={1100}
-            priority={true}
-            className=""
-          /> */}
         </div>
       </div>
     </section>

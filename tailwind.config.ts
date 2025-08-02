@@ -4,6 +4,7 @@ const plugin = require('tailwindcss/plugin');
 
 
 const config: Config = {
+  
   content: [
     "./node_modules/flowbite-react/lib/**/*.js",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,20 +15,23 @@ const config: Config = {
     extend: {
       colors:{
         primary:"#F2F2F2",
-        // secondary:"#FABE33",
-        // secondary1:"#eb6d2f",
-        // secondary2:"#eb6d2f",
-        // background:"#f8f7f2",
-        // background:"#fbf9fa",
-        background:"#f8f7f2",
-        // primary:"#efb039",
-        secondary2:"#762008",
-        secondary3:"#f6e7cf",
         secondary:"#d7873c",
-        secondary1:"#af581c",  
+        secondary1:"#af581c", 
+        secondary2:"#762008",
+        secondary3:"#f6e7cf", 
         secondary4:"#ad5a1d",  
         secondary5:"#ffc219",  
-        secondary6:"#fcaf01",   
+        secondary6:"#fcaf01", 
+
+        background:"#f8f7f2",
+        background2:"#fff6d9",
+        dark_background:"#715e51",
+        dark_background2:"#7e6a5d",
+
+        primary_text:"#715e51",
+        dark_text:"#f6e7cf",
+        dark_text2:"#fcaf01",
+          
       },
       fontFamily: {
         Brush: ["Brush Script MT"],

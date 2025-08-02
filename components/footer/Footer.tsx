@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import Logo from "@compo/header/Logo";
 import { usePathname } from "next/navigation";
-
+import { footer_items } from "@/data/footerItems";
 
 export default function Footer() {
   // hidden footer in Administartion
@@ -11,109 +11,48 @@ export default function Footer() {
     : " bg-background !py-0";
 
   return (
-    <footer className={classN}>
-      {/* <hr className=" bg-gray-300  border-2 " /> */}
-      {/* <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" /> */}
-      <div className="container w-full  p-4 py-6 lg:py-8">   
-      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <footer className={classN + "  dark:bg-dark_background "}>
+      <div className="container w-full  p-4 py-6 lg:py-8">
+        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
 
         <div className="sm:flex sm:justify-between">
           <div className="mb-6 sm:mb-0 hidden lg:block">
             <Logo />
           </div>
           <div className="grid grid-cols-1 gap-8 sm:gap-6 sm:grid-cols-3">
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Resources
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a href="/" className="hover:underline">
-                    Home
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="/#products" className="hover:underline">
-                    Products
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="/#about_us" className="hover:underline">
-                    About Us
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="/#why_us" className="hover:underline">
-                    Why Us
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Contact us
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline ">
-                    Address:agadir-morroco
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Phone:+212600000000
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Email:contact@honeybee.com
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
-                Legal
-              </h2>
-              <ul className="text-gray-500 dark:text-gray-400 font-medium">
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Shopping Policy
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Terms &amp; Conditions
-                  </a>
-                </li>
-                <li className="mb-4">
-                  <a href="#" className="hover:underline">
-                    Refund Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
+            {footer_items.map((section, index:number) => {
+              const links = section.links;
+              if (!links || links.length === 0) return null; // Skip empty sections
+              return (
+                <div key={index}>
+                  <h2 className="mb-6 text-sm font-semibold text-gray-900 dark:text-dark_text2 uppercase ">
+                    {section.title}
+                  </h2>
+                  <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                    {links.map((link:any, index:number) => (
+                      <li key={index} className="mb-4 dark:text-dark_text">
+                        <a href={link.href} className="hover:underline">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
           </div>
         </div>
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            ©2024 {" "}
+            ©2024{" "}
             <a href="/" className="hover:underline text-secondary4">
-               HoneyBee™
+              BeeHoney™
             </a>
             . All Rights Reserved.
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0">
-            <a
-              href="#"
-              className="text-secondary4 hover:text-secondary2 dark:hover:text-white"
-            >
+            <a href="#" className="text-secondary4 hover:text-secondary2 ">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"
@@ -129,10 +68,7 @@ export default function Footer() {
               </svg>
               <span className="sr-only">Facebook page</span>
             </a>
-            <a
-              href="#"
-              className="text-secondary4 hover:text-secondary2 dark:hover:text-white ms-5"
-            >
+            <a href="#" className="text-secondary4 hover:text-secondary2  ms-5">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"
@@ -144,10 +80,7 @@ export default function Footer() {
               </svg>
               <span className="sr-only">Discord community</span>
             </a>
-            <a
-              href="#"
-              className="text-secondary4 hover:text-secondary2 dark:hover:text-white ms-5"
-            >
+            <a href="#" className="text-secondary4 hover:text-secondary2  ms-5">
               <svg
                 className="w-4 h-4"
                 aria-hidden="true"

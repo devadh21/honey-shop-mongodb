@@ -5,12 +5,12 @@ import CardWhyUs from "@/elements/CardWhyUs";
 
 export default function WhyUs() {
   return (
-    <section className=" bg-background " id="why_us">
+    <section className=" bg-background2 dark:bg-dark_background2 dark:text-dark_text" id="why_us">
       <div className="container !py-20">
-        <h1 className="text-secondary2 text-4xl  text-center font-bold pt-4">
+        <h1 className="text-secondary2 dark:text-dark_text2 text-4xl  text-center font-bold pt-4">
           Why Us
         </h1>
-        <h2 className="text-center  text-secondary4 pb-4  capitalize font-bold ">
+        <h2 className="text-center  text-secondary4 dark:text-dark_text pb-4  capitalize font-bold ">
           poeple why choose our products
         </h2>
         <p className="text-justify px-4 ">

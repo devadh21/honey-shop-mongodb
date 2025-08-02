@@ -3,7 +3,6 @@ import { useRef } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import { Toaster } from "sonner";
-// import newsLatterAction from "@/serverActions/newslatter/newsLatterAction";
 import newsLatterActionMDB from "@/netlify/functions/newsLatterActionMDB";
 
 import isEmailActions from "@/netlify/functions/isEmailActions";
@@ -41,14 +40,14 @@ function Newslatter() {
   };
 
   return (
-    <section className="bg-black">
+    <section className="bg-background2 dark:bg-dark_background2 dark:text-dark_text">
       <div className="container !p-4">
         <div className="grid grid-cols-1 md:grid-cols-3 justify-center">
           <div className="flex flex-col justify-center  gap-6 p-4 md:col-span-2 ">
-            <h1 className="text-secondary5 text-2xl   font-bold  capitalize">
+            <h1 className="text-secondary5 dark:text-dark_text2 text-2xl   font-bold  capitalize">
               newslatter sing up
             </h1>
-            <p className="text-background">
+            <p className="">
               Stay in the sweet loop with our Honey Shop newsletter! Sign up now
               to receive exclusive updates, special offers, and buzzing news
               straight to your inbox. Don't miss out on the latest buzz –

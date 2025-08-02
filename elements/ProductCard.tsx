@@ -6,16 +6,9 @@ import ButtonLink from "@/elements/ButtonLink";
 import ButtonAction from "@/elements/ButtonAction";
 import { addToCartSVG } from "@/elements/IconSvg/AddToCart";
 import CartContext from "@/context/CartContext";
+import {CardProps} from "@/typings/interfaces"; 
 
-interface CardProps {
-  id?: string;
-  img: string;
-  title: string;
-  price: string;
-  old_price: string;
-  half_kg?: string;
-  card_href: string;
-}
+
 
 const ProductCard: React.FC<CardProps> = ({
   id,
@@ -38,7 +31,7 @@ const ProductCard: React.FC<CardProps> = ({
   };
 
   return (
-    <div className="flex flex-col justify-center items-center  shadow-lg overflow-hidden  bg-white group  ">
+    <div className="flex flex-col justify-center items-center  shadow-lg overflow-hidden   group    ">
       <div className=" h-full flex items-center">
         <Image
           src={img}

@@ -10,8 +10,6 @@ import Services from "@/components/home/Services";
 import Newslatter from "@/components/home/Newslatter";
 import Chatbot from "@/components/chatbot/Chatbot";
 
-
-
 import { IProduct } from "@/typings/interfaces";
 import { getProductsMDB } from "@/netlify/functions/getProducts";
 
@@ -25,7 +23,6 @@ export default function Home() {
       // get products data from the server.
 
       const data = await getProductsMDB();
-      
 
       setProductsMDB(data);
     }
@@ -33,7 +30,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="full-screen">
+    <main className="full-screen ">
       <Hero />
       <Products products={productsMDB} />
       <About />

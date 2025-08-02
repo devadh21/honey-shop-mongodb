@@ -3,13 +3,13 @@ import ButtonLink from "@/elements/ButtonLink";
 
 export default function About() {
   return (
-    <section className="bg-white   " id="about_us">
+    <section className="bg-background dark:bg-dark_background dark:text-dark_text " id="about_us">
       <div className="container    ">
         <div className="content-center px-4">
-          <h1 className="text-secondary2 text-4xl  text-center font-bold pt-4">
+          <h1 className="text-secondary2 dark:text-dark_text2 text-4xl  text-center font-bold pt-4">
             About Us
           </h1>
-          <h2 className="text-center  text-secondary4 pb-4  capitalize font-bold ">
+          <h2 className="text-center  text-secondary4 dark:text-dark_text pb-4  capitalize font-bold ">
             Quality Specialty Honey Direct From The Honey Farm
           </h2>
           <p className="text-justify">

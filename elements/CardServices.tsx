@@ -18,7 +18,7 @@ export default function CardServices({
         height={160}
         className=" p-2 border-2 border-secondary4  mx-auto polygon"
       />
-      <h2 className=" capitalize text-center text-xl text-secondary2 p-3 ">
+      <h2 className=" capitalize text-center text-xl text-secondary2 p-3 dark:text-dark_text2 ">
         {title}
       </h2>
       <p className="text-justify p-2 grow-0 ">{description}</p>

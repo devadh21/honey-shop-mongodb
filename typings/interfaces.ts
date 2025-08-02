@@ -65,3 +65,27 @@ export interface IshippingInfo {
   phone: FormDataEntryValue | null;
   adress: FormDataEntryValue | null;
 }
+
+// types/footer.ts
+export interface FooterLink {
+  href: string;
+  label: string;
+  id: string;
+}
+
+export interface FooterSection {
+  title: string;
+  links: FooterLink[];
+}
+
+
+// Card
+export interface CardProps {
+  id?: string;
+  img: string;
+  title: string;
+  price: string;
+  old_price: string;
+  half_kg?: string;
+  card_href: string;
+}

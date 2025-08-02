@@ -1,5 +1,8 @@
 "use client";
 import { nav_items } from "@/data/navItems";
+import { useTheme } from "next-themes";
+import { Moon } from "@/elements/IconSvg/MoonDarkMode";
+import { Sun } from "@/elements/IconSvg/SunLigthMode";
 
 import ButtonLink from "@/elements/ButtonLink";
 import { usePathname } from "next/navigation";
@@ -22,6 +25,7 @@ import {
 import { BuiltInProviderType } from "next-auth/providers/index";
 
 export default function Navbar() {
+  const { theme, setTheme } = useTheme();
   const { status } = useSession();
   const [routeActive, setRouteActive] = useState("");
   const [providers, setProviders] = useState<Record<
@@ -80,13 +84,13 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`  ${classN}`}>
-      <div className="relative container flex  md:justify-between  items-center bg-secondary5  px-4 !py-2   shadow-lg ">
+    <nav className={`  ${classN} bg-background dark:bg-dark_background `}>
+      <div className="relative container flex  md:justify-between  items-center bg-secondary5 dark:bg-dark_background2   px-4 !py-2   shadow-lg     ">
         {/* logo element */}
         <div className="">
           <Logo />
         </div>
-        <div className="flex items-center justify-end w-2/5  grow md:mr-0 mr-16">
+        <div className="flex items-center justify-end w-2/5  grow md:mr-0 mr-16 dark:text-dark_text2">
           <ul className="md:flex lg:justify-between gap-1 hidden ">
             {
               /* map through the links and create a list item for each one of them */
@@ -102,7 +106,7 @@ export default function Navbar() {
                       <ButtonLink
                         bt_href={item.href}
                         label={item.label}
-                        className={` transition-all duration-300 !bg-transparent  border-b-2 border-b-transparent hover:border-b-2  hover:border-b-secondary2 !text-secondary2 ${actived}`}
+                        className={` transition-all duration-300 !bg-transparent  border-b-2 border-b-transparent hover:border-b-2  hover:border-b-secondary2 !text-secondary2 dark:!text-dark_text2 dark:hover:border-b-dark_text2 ${actived}`}
                       />
                     </div>
                   </div>
@@ -113,12 +117,13 @@ export default function Navbar() {
           {/* cart */}
           <Link
             href={"/cart"}
-            className="transition-all duration-300 !w-8 hover:!w-9 md:!w-5 md:hover:!w-6 !relative "
+            className="transition-all duration-300 !w-8 hover:!w-9 md:!w-5 md:hover:!w-6 !relative    "
             title="Show Cart"
           >
             <svg
               version="1.1"
-              fill="#762008"
+              
+              fill={theme === "dark" ? "#fcaf01" : "#000"}
               id="Layer_1"
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -129,15 +134,34 @@ export default function Navbar() {
                 <path d="M3.9,7.9C1.8,7.9,0,6.1,0,3.9C0,1.8,1.8,0,3.9,0h10.2c0.1,0,0.3,0,0.4,0c3.6,0.1,6.8,0.8,9.5,2.5c3,1.9,5.2,4.8,6.4,9.1 c0,0.1,0,0.2,0.1,0.3l1,4H119c2.2,0,3.9,1.8,3.9,3.9c0,0.4-0.1,0.8-0.2,1.2l-10.2,41.1c-0.4,1.8-2,3-3.8,3v0H44.7 c1.4,5.2,2.8,8,4.7,9.3c2.3,1.5,6.3,1.6,13,1.5h0.1v0h45.2c2.2,0,3.9,1.8,3.9,3.9c0,2.2-1.8,3.9-3.9,3.9H62.5v0 c-8.3,0.1-13.4-0.1-17.5-2.8c-4.2-2.8-6.4-7.6-8.6-16.3l0,0L23,13.9c0-0.1,0-0.1-0.1-0.2c-0.6-2.2-1.6-3.7-3-4.5 c-1.4-0.9-3.3-1.3-5.5-1.3c-0.1,0-0.2,0-0.3,0H3.9L3.9,7.9z M96,88.3c5.3,0,9.6,4.3,9.6,9.6c0,5.3-4.3,9.6-9.6,9.6 c-5.3,0-9.6-4.3-9.6-9.6C86.4,92.6,90.7,88.3,96,88.3L96,88.3z M53.9,88.3c5.3,0,9.6,4.3,9.6,9.6c0,5.3-4.3,9.6-9.6,9.6 c-5.3,0-9.6-4.3-9.6-9.6C44.3,92.6,48.6,88.3,53.9,88.3L53.9,88.3z M33.7,23.7l8.9,33.5h63.1l8.3-33.5H33.7L33.7,23.7z" />
               </g>
             </svg>
-            <p className="p-1 font-bold text-sm -top-3 -right-3 text-center absolute  text-secondary2  ">
+            <p className="p-1 font-bold text-sm -top-3 -right-3 text-center absolute  text-secondary2 dark:text-dark_text2  ">
               {nbrItems || 0}
             </p>
           </Link>
+          {/*Light or  Dark mode */}
+          <div className="ml-7">
+            
+              {theme === "dark" && (
+                <button onClick={() => setTheme("light")} title="Light Mode">
+                  {Sun} 
+                </button>
+              )}
+              {theme === "light" && (
+                <button onClick={() => setTheme("dark")} title="Dark Mode">
+                  {Moon}
+                </button>
+              )}
+            
+          </div>
           {/* sign in with google */}
           <div className="mx-7">
             <div>
-              {status === "unauthenticated" &&  <ButtonGoogle onClick={handleClickButtonGoogle} />}
-              {status === "loading" &&  <div className="w-12 h-10 bg-white animate-pulse rounded-lg "></div>}
+              {status === "unauthenticated" && (
+                <ButtonGoogle onClick={handleClickButtonGoogle} />
+              )}
+              {status === "loading" && (
+                <div className="w-12 h-10 bg-white animate-pulse rounded-lg "></div>
+              )}
               {status === "authenticated" && (
                 <Link
                   href={"/admin"}
@@ -193,7 +217,6 @@ export default function Navbar() {
           {
             /* map through the links and create a list item for each one of them */
             nav_items.map((item, index) => {
-              // const active = path === `${item.href}` ? "!bg-secondary2" : "";
               return (
                 <div
                   className=" flex flex-col justify-between gap-1"
@@ -210,19 +233,6 @@ export default function Navbar() {
               );
             })
           }
-          {/* <ButtonLink bt_href="/" label="Home" className="!w-full" />
-          <ButtonLink
-            bt_href="/#products"
-            label="Products"
-            className="  !w-full"
-          />
-          <ButtonLink
-            bt_href="/#about_us"
-            label="About Us"
-            className="!w-full"
-          />
-          <ButtonLink bt_href="/#why_us" label="Why Us" className="!w-full" /> */}
-          {/* <ButtonLink bt_href="#"           title="Shop New"  className="!w-full" /> */}
         </ul>
       </div>
       {/* menu for mobile screen  */}

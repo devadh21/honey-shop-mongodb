@@ -7,16 +7,16 @@ import { IProduct } from "@/typings/interfaces";
 
 export default function Products({ products }: { products: IProduct[] | undefined }) {
   return (
-    <section className=" py-20 bg-background " id="products">
+    <section className=" py-20 bg-background2 dark:bg-dark_background2 dark:text-dark_text " id="products ">
       <div className="container">
-        <h1 className="text-secondary2 text-4xl  text-center font-bold pt-4">
+        <h1 className="text-secondary2 dark:text-dark_text2 text-4xl  text-center font-bold pt-4">
           Our Products
         </h1>
-        <h2 className="text-center  text-secondary4 pb-4  capitalize font-bold ">
+        <h2 className="text-center  text-secondary4 dark:text-dark_text pb-4  capitalize font-bold ">
           Super Sweet Nectarous Honey
         </h2>
         {products && (
-          <div className="grid  sm:grid-cols-2 lg:grid-cols-4 gap-1 py-8 px-4  ">
+          <div className="grid  sm:grid-cols-2 lg:grid-cols-4 gap-1 py-8 px-4   ">
             {products.map((product: IProduct) => {
               // convert img_url to array
               const arr = product?.img_url.split(","); // convert images to array

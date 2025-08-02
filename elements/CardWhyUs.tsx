@@ -11,7 +11,7 @@ export default function CardWhyUs({
   description: string;
 }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2  p-4 bg-white shadow-lg ">
+    <div className="grid grid-cols-1 md:grid-cols-2  p-4 bg-white shadow-lg dark:bg-dark_background ">
       <div className="flex justify-center items-center  p-1">
         <Image
           src={img}

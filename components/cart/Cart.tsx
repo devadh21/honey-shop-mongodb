@@ -65,14 +65,14 @@ export default function Cart() {
   return (
     <>
       {cartItems.length === 0 ? (
-        <div className=" text-center w-full shadow-lg ">
+        <div className=" text-center w-full shadow-lg dark:bg-dark_background ">
           No products in cart yet.{" "}
           <Link href={"/"} className="text-lg text-secondary">
             Shop now!
           </Link>
         </div>
       ) : (
-        <div className=" flex flex-col sm:flex-row w-full shadow-lg ">
+        <div className=" flex flex-col sm:flex-row w-full shadow-lg dark:bg-dark_background ">
           <div className="basis-2/3 flex flex-col ">
             {cartItems.map((pdt: any, index: any) => {
               const isCheckedOneKg = pdt.weight === "1 kg" ? true : false;
@@ -86,7 +86,7 @@ export default function Cart() {
               return (
                 <div
                   key={index}
-                  className="relative   my-4 w-full flex shadow-lg"
+                  className="relative   my-4 w-full flex shadow-lg dark:text-dark_text"
                 >
                   <div
                     onClick={handleDelete}
@@ -108,11 +108,11 @@ export default function Cart() {
                   <div className="basis-2/3 flex flex-col  gap-3 w-full p-5">
                     <div className="flex flex-col items-center justify-between">
                       <div className="flex justify-between items-center w-full gap-2 py-4">
-                        <span className="text-secondary2 text-2xl  text-center font-bold">
+                        <span className="text-secondary2 text-2xl  text-center font-bold dark:text-dark_text2">
                           {pdt.name}
                         </span>
                         <div className="">
-                          <span className="text-2xl text-green-700">
+                          <span className="text-2xl text-green-700 dark:text-dark_text2">
                             {pdt.price} DH
                           </span>
                           <span className="text-md line-through text-red-700 mx-2">
@@ -244,8 +244,8 @@ export default function Cart() {
           </div>
 
           <div className="basis-1/3  ">
-            <div className="bg-background p-6">
-              <h1 className="text-secondary4 text-lg pb-4  capitalize font-bold">
+            <div className="bg-background p-6 dark:bg-dark_background2 dark:text-dark_text">
+              <h1 className="text-secondary4 text-lg pb-4  capitalize font-bold dark:text-dark_text2">
                 Order summary{" "}
               </h1>
               <div className="flex justify-between items-center py-4">

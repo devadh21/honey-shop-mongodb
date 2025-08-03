@@ -12,8 +12,8 @@ export default async function MoreProducts() {
 
 
   return (
-    <div className="mt-20 py-4">
-      <h1 className="text-secondary2 text-xl  uppercase font-bold p-4">
+    <div className="mt-20 py-4 dark:text-dark_text">
+      <h1 className="text-secondary2 text-xl  uppercase font-bold p-4 dark:text-dark_text2">
         you may aslo like
       </h1>
       {first_tree_products && (

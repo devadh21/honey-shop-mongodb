@@ -2,7 +2,7 @@ import React from "react";
 
 export default function AboutProduct() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 mt-20 py-4  justify-center items-center md:divide-x-4">
+    <div className="grid grid-cols-1 md:grid-cols-3 mt-20 py-4  justify-center items-center md:divide-x-4 dark:text-dark_text">
       <div className=" p-4 h-full   ">
         <h1 className="py-4 text-xl text-secondary uppercase font-bold  ">
           quick description

@@ -30,7 +30,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="full-screen ">
+    <main className="full-screen  ">
       <Hero />
       <Products products={productsMDB} />
       <About />

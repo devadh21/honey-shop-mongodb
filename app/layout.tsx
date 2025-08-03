@@ -12,7 +12,7 @@ import ClientOnly from "@/components/header/ClientOnly"; ////  For eliminates th
 import { SessionProvider } from "next-auth/react";
 
 
-const roboto = Roboto({ subsets: ["latin"], weight: "400" });
+const roboto = Roboto({ subsets: ["latin"], weight: "400" }); 
 
 export default function RootLayout({
   children,
@@ -48,7 +48,7 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/favicon_io/site.webmanifest" />
       </head>
-      <body className={`  ${roboto.className}`}>
+      <body className={`  ${roboto.className} `}>
         <SessionProvider>
           <CartProvider>
             <ClientOnly>

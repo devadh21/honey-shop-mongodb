@@ -51,7 +51,7 @@ const config: Config = {
         'button-border-light': '#dadce0',
         'logo-blue': '#4285f4',
         'logo-green': '#34a853',
-        'logo-yellow': '#fbbc05',
+        'logo-yellow': '#fbbc05', 
         'logo-red': '#ea4335',
       },
     },

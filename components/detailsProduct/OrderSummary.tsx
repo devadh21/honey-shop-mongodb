@@ -27,13 +27,13 @@ function OrderSummary({
   };
   return (
     <div className="flex flex-col-reverse sm:flex-row w-full shadow-lg  ">
-      <div className="basis-1/2   p-6   bg-background divide-y-2">
-        <h2 className="uppercase text-lg text-center">{product?.name}</h2>
+      <div className="basis-1/2   p-6   bg-background dark:bg-dark_background dark:text-dark_text divide-y-2">
+        <h2 className="uppercase text-lg text-center dark:text-dark_text2">{product?.name}</h2>
         <div className="  my-4 w-full">
           <div className="flex flex-col   gap-3 w-full">
             <div className="flex flex-col items-center justify-between">
               <div className="flex justify-end items-center w-full gap-2 py-4">
-              <span className="text-2xl text-green-700">
+              <span className="text-2xl text-green-700 dark:text-dark_text">
                   {Number(product?.price).toFixed(2)} DH
                 </span>
                 <span className="line-through text-red-700">
@@ -102,7 +102,7 @@ function OrderSummary({
 
         <div className="flex justify-between items-center py-4">
           <span className="font-bold">Order Total:</span>
-          <span className="text-[22px] font-bold">{calculatePrice()}</span>
+          <span className="text-[22px] font-bold dark:text-dark_text2">{calculatePrice()}</span>
         </div>
         <div className="flex flex-col gap-2 justify-center items-center w-full mt-8">
           <ButtonAction
@@ -121,7 +121,7 @@ function OrderSummary({
       </div>
       
       {/* Gallary Image */}
-      <div className=" basis-1/2 w-full h-full  py-3  text-sm text-left    bg-background">
+      <div className=" basis-1/2 w-full h-full  py-3  text-sm text-left  dark:bg-dark_background ">
         <GallaryImage images={images_url} />
       </div>
     </div>

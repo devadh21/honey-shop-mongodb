@@ -8,7 +8,7 @@ import Image from "next/image";
 import CartContext from "@/context/CartContext";
 import Link from "next/link";
 import ModalComfirm from "@compo/detailsProduct/ModalComfirm";
-// import { confirmOrderCartAction } from "@/serverActions/cart/confirmOrderCartAction";
+
 import { confirmOrderCartActionMDB } from "@/netlify/functions/confirmOrderCartAction";
 
 import { IshippingInfo} from "@/typings/interfaces";
@@ -63,7 +63,7 @@ export default function Cart() {
   };
 
   return (
-    <>
+    <div className="container full-screen !pt-4 ">
       {cartItems.length === 0 ? (
         <div className=" text-center w-full shadow-lg dark:bg-dark_background ">
           No products in cart yet.{" "}
@@ -72,7 +72,7 @@ export default function Cart() {
           </Link>
         </div>
       ) : (
-        <div className=" flex flex-col sm:flex-row w-full shadow-lg dark:bg-dark_background ">
+        <div className=" flex flex-col sm:flex-row w-full shadow-lg dark:bg-dark_background2 ">
           <div className="basis-2/3 flex flex-col ">
             {cartItems.map((pdt: any, index: any) => {
               const isCheckedOneKg = pdt.weight === "1 kg" ? true : false;
@@ -244,7 +244,7 @@ export default function Cart() {
           </div>
 
           <div className="basis-1/3  ">
-            <div className="bg-background p-6 dark:bg-dark_background2 dark:text-dark_text">
+            <div className="bg-background p-6 dark:bg-dark_background dark:text-dark_text">
               <h1 className="text-secondary4 text-lg pb-4  capitalize font-bold dark:text-dark_text2">
                 Order summary{" "}
               </h1>
@@ -282,6 +282,6 @@ export default function Cart() {
           )}
         </div>
       )}
-    </>
+    </div>
   );
 }

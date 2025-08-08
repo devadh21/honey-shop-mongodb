@@ -18,7 +18,7 @@ export const footer_items: FooterSection[] = [
     links: [
       { href: '/#', label: 'Address:morocco', id: 'address' },
       { href: '/#', label: 'Phone:+212600000000', id: 'phone' },
-      { href: '/#a', label: 'Email:contact@honeybee.com', id: 'email' },
+      { href: '/#a', label: 'Email:contact@devadh.com', id: 'email' },
     ],
   },
   {

@@ -11,8 +11,7 @@ import ClientOnly from "@/components/header/ClientOnly"; ////  For eliminates th
 
 import { SessionProvider } from "next-auth/react";
 
-
-const roboto = Roboto({ subsets: ["latin"], weight: "400" }); 
+const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
 export default function RootLayout({
   children,
@@ -29,6 +28,7 @@ export default function RootLayout({
         <title>Bee Honey</title>
         <meta name="description" content="Bee Honey Shop" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -47,20 +47,21 @@ export default function RootLayout({
           href="favicon_io/favicon-16x16.png"
         />
         <link rel="manifest" href="/favicon_io/site.webmanifest" />
+
       </head>
       <body className={`  ${roboto.className} `}>
         <SessionProvider>
           <CartProvider>
             <ClientOnly>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="light"
-              enableSystem={false}
-            >
-              <Navbar />
-              {children}
-              <Footer />
-            </ThemeProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="light"
+                enableSystem={false}
+              >
+                <Navbar />
+                {children}
+                <Footer />
+              </ThemeProvider>
             </ClientOnly>
           </CartProvider>
         </SessionProvider>

@@ -23,6 +23,7 @@ import {
   useSession,
 } from "next-auth/react";
 import { BuiltInProviderType } from "next-auth/providers/index";
+import Switch from "@/elements/SwitchDarkMode";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -139,21 +140,11 @@ export default function Navbar() {
             </p>
           </Link>
           {/*Light or  Dark mode */}
-          <div className="ml-7">
-            
-              {theme === "dark" && (
-                <button onClick={() => setTheme("light")} title="Light Mode">
-                  {Sun} 
-                </button>
-              )}
-              {theme === "light" && (
-                <button onClick={() => setTheme("dark")} title="Dark Mode">
-                  {Moon}
-                </button>
-              )}
-            
+          <div className="ml-7" >
+            <Switch />
           </div>
-          {/* sign in with google */}
+
+          {/* sign in with google */} 
           <div className="mx-7">
             <div>
               {status === "unauthenticated" && (
